@@ -16,6 +16,12 @@ import (
 	"github.com/visvasity/daemon/initstatus"
 )
 
+// IsMonitored returns true if current process is being monitored to restart
+// automatically.
+func IsMonitored(envKey string) bool {
+	return os.Getenv(envKey) != ""
+}
+
 // Options defines the user configurable values for the Monitor.
 type Options struct {
 	ShutdownSignal    os.Signal     // Defaults to os.Interrupt
